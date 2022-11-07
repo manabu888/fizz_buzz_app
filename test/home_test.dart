@@ -11,27 +11,50 @@ void main() {
       await tester.pumpWidget(createHomeScreen());
       expect(find.text('FizzBuzz App'), findsOneWidget);
     });
-    testWidgets('Testing if ListView shows up', (tester) async {
+    testWidgets('Testing if TextField shows up', (tester) async{
       await tester.pumpWidget(createHomeScreen());
-      expect(find.byType(ListView), findsOneWidget);
+      expect(find.byType(TextField), findsOneWidget);
     });
-    testWidgets('Testing if FloatingActionButton shows up', (tester) async {
+    testWidgets('Testing if ElevatedButton shows up', (tester) async{
       await tester.pumpWidget(createHomeScreen());
-      expect(find.byType(FloatingActionButton), findsOneWidget);
+      expect(find.byType(ElevatedButton), findsOneWidget);
     });
+
     testWidgets('Testing IconButtons', (tester) async {
+      // Create Home Screen
       await tester.pumpWidget(createHomeScreen());
-      expect(find.byIcon(Icons.restart_alt), findsNothing);
-
-      await tester.tap(find.byIcon(Icons.check));
+      // Make sure there's no Floating Button
+      expect(find.byIcon(Icons.start), findsNothing);
+      // Input Limit number
+      await tester.enterText(find.byType(TextField), '50');
+      // Tap List Numbers Button
+      await tester.tap(find.byType(ElevatedButton));
       await tester.pumpAndSettle(const Duration(seconds: 1));
-
-      expect(find.byIcon(Icons.restart_alt), findsOneWidget);
-      expect(find.byIcon(Icons.check), findsNothing);
+      // Make sure ListView is shown
       expect(find.byType(ListView), findsOneWidget);
-      expect(find.text('Fizz'), findsAtLeastNWidgets(1));
+      // Make sure Floating Button is shown
+      expect(find.byIcon(Icons.start), findsOneWidget);
+      // Tap Button to replace with FizzBuzz
+      await tester.tap(find.byIcon(Icons.start));
+      await tester.pumpAndSettle(const Duration(seconds: 1));
+      // Make sure Floating Icon for resetting is shown
+      expect(find.byIcon(Icons.restart_alt), findsOneWidget);
     });
+
+    testWidgets('User Input Validation', (tester) async {
+      // Create Home Screen
+      await tester.pumpWidget(createHomeScreen());
+      // Input Non Numeric Value
+      await tester.enterText(find.byType(TextField), 'Hello');
+      // Tap Submit button
+      await tester.tap(find.byType(ElevatedButton));
+      await tester.pumpAndSettle(const Duration(seconds: 1));
+      // Make sure error message is shown
+      expect(find.text('Must be a number'), findsOneWidget);
+    });
+
   });
+
 
   group('Fizz Buzz Logic tests', () {
     test('It should return "1" when 1', () {
