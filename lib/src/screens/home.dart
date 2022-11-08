@@ -182,14 +182,14 @@ class ItemListWidget extends StatelessWidget {
   }
 
   Color _cardBackgroundColor(var item) {
-    Color backgroundColor = Colors.white;
+    Color backgroundColor = Colors.white12;
     if (item.runtimeType == String) {
       if (item == 'Fizz') {
-        backgroundColor = const Color.fromARGB(255, 188, 244, 123);
+        backgroundColor = Colors.green;
       } else if (item == 'Buzz') {
-        backgroundColor = const Color.fromARGB(255, 255, 119, 119);
+        backgroundColor = Colors.red;
       } else if (item == 'FizzBuzz') {
-        backgroundColor = const Color.fromARGB(255, 242, 242, 106);
+        backgroundColor = Colors.orange;
       }
     }
     return backgroundColor;
