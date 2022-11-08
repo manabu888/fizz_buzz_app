@@ -1,16 +1,36 @@
-# fizz_buzz_app
+# Fizz Buzz App
 
-A new Flutter project.
+A simple Fizz Buzz Application using Flutter (Dart).
+
+## Features
+- Supported platform:
+    - iOS
+    - Android
+- Display numbers depending on User input
+    - e.g. 1 to 1000
+- Replace numbers with the words "Fizz", "Buzz" or "FizzBuzz"
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### How to run FizzBuzz App on iOS and Android?
+1. Download source code
+2. Open with IDE such as Visual Studio Code
+3. Start Emulator
+4. Choose the Emulator
+5. Start application
 
-A few resources to get you started if this is your first Flutter project:
+### How to use?
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. Input a number to generate a list of numbers
+2. Tap Generate button
+3. A list of numbers will be shown
+4. Tap the button on bottom right
+5. The numbers will be replace with FizzBuzz
+6. Tap Reset button to go back to 1st view
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Future plan
+- Add Hint text or Instructions to improve UX
+- Consider using Grid View to improve User engagement
+- Quiz feature
+    - A number is displayed
+    - User will tap "Fizz", "Buzz", "FizzBuzz" or "None"
