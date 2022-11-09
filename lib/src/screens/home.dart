@@ -160,7 +160,8 @@ class ItemListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return items.isNotEmpty
+    ? ListView.builder(
       padding: const EdgeInsets.all(8),
       itemCount: items.isNotEmpty ? items.length : 0,
       itemBuilder: (context, i) {
@@ -178,7 +179,7 @@ class ItemListWidget extends StatelessWidget {
           ),
         );
       }
-    );
+    ): const Center(child: Text('No available items'));
   }
 
   Color _cardBackgroundColor(var item) {
